@@ -1,0 +1,76 @@
+{% extends '../../base.html' %}
+{% load static %}
+
+{% block estilo %}
+  <style>
+    .fas_hover:hover{
+      color: black;
+    }
+  </style>
+
+{% endblock estilo %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title">{{titulo_card}}</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            {% for coluna in colunas %}
+              <th>{{coluna}}</th>
+            {% endfor %}
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for values in datas_values %}
+            <tr>
+                {% for value in values %}
+                <td>{{ value }}</td>
+                {% endfor %}
+              <td>
+                <div class="row marcador align-items-center">
+                  {% if aprovar %}
+                  <div class="col-lg-4 mx-auto text-center">
+                    <a href="#" class='fas_hover'>
+                      <i class="fas fa-thumbs-up" style="color: green;"></i>
+                    </a>
+                  </div>
+                  {% endif %}
+                  {% if recusar %}
+                  <div class="col-lg-4 mx-auto text-center">
+                    <a href="#" class='fas_hover'>
+                      <i class="fas fa-hand-paper" style="color: red;"></i>
+                    </a>
+                  </div>
+                  {% endif %}
+                  {% if excluir %}
+                  <div class="col-lg-4 mx-auto text-center">
+                    <a href="#" class='fas_hover'>
+                      <i class="fas fa-times-circle" style="color: blue;"></i>
+                    </a>
+                  </div>
+                  {% endif %}
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            {% for coluna in colunas %}
+              <th>{{coluna}}</th>
+            {% endfor %}
+            <th> </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+{% endblock content %}
