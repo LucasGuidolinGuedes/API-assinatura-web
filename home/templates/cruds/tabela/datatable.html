@@ -9,7 +9,9 @@
           <h3 class="card-title">{{titulo_card}}</h3>
         </div>  
         <div class="col-md-6">
-          <a href="{{url_cadastro}}" class='btn btn-success' style='float: right;'>{{descricao_botao_novo}}</a>
+          {% if bt_novo %}
+            <a href="{{url_cadastro}}" class='btn btn-success' style='float: right;'>{{descricao_botao_novo}}</a>
+          {% endif %}
         </div>  
       </div>
       
@@ -33,29 +35,29 @@
                 {% endfor %}
               <td>
                 <div class="row marcador align-items-center">
-                  {% if editar %}
-                  <div class="col-lg-4 mx-auto text-center">
-                    <a href="{{url_update}}/{{values.0}}" class="fas_hover">
-                      <i class="fas fa-pencil-alt" style='color: #070454;'></i>
-                    </a>
-                  </div>
-                  {% endif %}
                   {% if aprovar %}
-                  <div class="col-lg-4 mx-auto text-center">
+                  <div class="col-lg-3 mx-auto text-center">
                     <a href="{{url_aprovar}}/{{values.0}}" class='fas_hover'>
                       <i class="fas fa-thumbs-up" style="color: green;"></i>
                     </a>
                   </div>
                   {% endif %}
                   {% if recusar %}
-                  <div class="col-lg-4 mx-auto text-center">
+                  <div class="col-lg-3 mx-auto text-center">
                     <a href="{{url_recusar}}/{{values.0}}" class='fas_hover'>
                       <i class="fas fa-hand-paper" style="color: red;"></i>
                     </a>
                   </div>
                   {% endif %}
+                  {% if editar %}
+                  <div class="col-lg-3 mx-auto text-center">
+                    <a href="{{url_update}}/{{values.0}}" class="fas_hover">
+                      <i class="fas fa-pencil-alt" style='color: #070454;'></i>
+                    </a>
+                  </div>
+                  {% endif %}
                   {% if excluir %}
-                  <div class="col-lg-4 mx-auto text-center">
+                  <div class="col-lg-3 mx-auto text-center">
                     <a href="{{url_delete}}/{{values.0}}" class='fas_hover'>
                       <i class="fas fa-times-circle" style="color: blue;"></i>
                     </a>
@@ -71,7 +73,7 @@
             {% for coluna in colunas %}
               <th>{{coluna}}</th>
             {% endfor %}
-            <th></th>
+            <th>Ações</th>
           </tr>
         </tfoot>
       </table>

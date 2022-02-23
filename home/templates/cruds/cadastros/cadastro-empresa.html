@@ -1,0 +1,76 @@
+{% extends '../../base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="card-title">{{titulo_card}}</h3>
+                    </div>  
+                    <div class="col-md-6">
+                        <a href="{{url_tabela}}" class='btn btn-success' style='float: right;'>Tabela Empresa</a>
+                    </div> 
+                </div>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="form-group col-md-4 mb-0">
+                                {{ forms.grupo_empresa|as_crispy_field }}   
+                            </div>
+                            <div class="form-group col-md-4 mb-0">
+                                {{ forms.cnpj|as_crispy_field }}   
+                            </div>
+                            <div class="form-group col-md-4 mb-0">
+                                {{ forms.razao_social|as_crispy_field }}   
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-3 mb-0">
+                                {{ forms.nome_reduzido|as_crispy_field }}   
+                            </div>
+                            <div class="form-group col-md-3 mb-0">
+                                {{ forms.telefone|as_crispy_field }}   
+                            </div>
+                            <div class="form-group col-md-3 mb-0">
+                                {{ forms.email|as_crispy_field }}   
+                            </div>
+                            <div class="form-group col-md-3 mb-0">
+                                {{ forms.status|as_crispy_field }}   
+                            </div>
+                        </div>  
+                    </div>
+                    <!-- /.form group -->
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="form-group col-md-11 mb-0">
+                        </div> 
+                        <div class="form-group col-md-1 mb-0">
+                            <button type="submit" class="btn btn-primary" style="float:right;">Enviar</button>
+                        </div> 
+                    </div>
+                </div>
+                <!-- /.card-footer -->
+            </form>
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+    $(document).ready(function($){
+        
+    });
+     
+</script>
+{% endblock js %}
